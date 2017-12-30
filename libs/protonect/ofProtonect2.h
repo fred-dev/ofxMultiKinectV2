@@ -29,11 +29,9 @@ public:
     }
     int getDeviceCount() {return freenect2.enumerateDevices();}
     libfreenect2::Freenect2Device::ColorCameraParams getColorCameraParams() {
-        if (!dev) {return;}
         return dev->getColorCameraParams();
     }
     libfreenect2::Freenect2Device::IrCameraParams getIrCameraParams() {
-        if (!dev) {return;}
         return dev->getIrCameraParams();
     }
 protected:
