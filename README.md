@@ -1,6 +1,9 @@
 ofxMultiKinectV2
 ================
 
+> **About this fork:** Fork of [hanasaan/ofxMultiKinectV2](https://github.com/hanasaan/ofxMultiKinectV2) with work to get it building on Windows (2017).
+
+
 Connecting more than one Kinect For Windows V2 sensor to one Supports only OSX. Based on the excellent work by
 
 - The [libfreenect2](https://github.com/OpenKinect/libfreenect2) team ( @JoshBlake @floe and @christiankerl plus others )
