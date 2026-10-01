@@ -7,6 +7,7 @@ class ofApp : public ofBaseApp{
     
     ofEasyCam ecam;
     ofVboMesh mesh;
+    ofTexture colourTex;
 public:
     
     void setup()
@@ -28,12 +29,13 @@ public:
         
         ecam.setAutoDistance(false);
         ecam.setDistance(200);
-        
+        colourTex.allocate(1920, 1080, GL_RGB);
     }
     
     void update() {
         kinect0.update();
         if (kinect0.isFrameNew()) {
+            colourTex.loadData(kinect0.getColorPixelsRef());
             mesh.clear();
             {
                 int step = 2;
@@ -45,10 +47,10 @@ public:
                         if(dist > 50 && dist < 500) {
                             ofVec3f pt = kinect0.getWorldCoordinateAt(x, y, dist);
                             
-                            ofColor c;
-                            float h = ofMap(dist, 50, 200, 0, 255, true);
-                            c.setHsb(h, 255, 255);
-                            mesh.addColor(c);
+//                            ofColor c;
+//                            float h = ofMap(dist, 50, 200, 0, 255, true);
+//                            c.setHsb(h, 255, 255);
+//                            mesh.addColor(c);
                             mesh.addVertex(pt);
                         }
                     }
@@ -69,6 +71,7 @@ public:
             ofDrawAxis(100);
             ofPushMatrix();
             ofTranslate(0, 0, -100);
+            
             mesh.draw();
             ofPopMatrix();
             ecam.end();
